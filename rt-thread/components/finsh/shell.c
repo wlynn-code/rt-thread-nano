@@ -893,8 +893,6 @@ int finsh_system_init(void)
 
     rt_sem_init(&(shell->rx_sem), "shrx", 0, 0);
     finsh_set_prompt_mode(1);
-    if(tid == NULL)
-        rt_kprintf("9999999\n");
     if (tid != NULL && result == RT_EOK)
         rt_thread_startup(tid);
     return 0;
