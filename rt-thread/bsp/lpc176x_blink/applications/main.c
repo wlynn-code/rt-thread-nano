@@ -12,8 +12,7 @@
 #include <stdint.h>
 #include <LPC17xx.h>
 #include <string.h>
-
-
+#include "boot_iap.h"
 
 uint32_t APP_ADDR[3] = {(uint32_t)0x00010000, (uint32_t)0x00040000};
 
@@ -60,6 +59,17 @@ void led_off(void)
 MSH_CMD_EXPORT(led_off, take off led);
 
 
+void upgrade(void)
+{
+    int res;
+    rt_device_t dev = rt_device_find("uart0");
+    struct rym_ctx rctx;
+    res = rym_recv_on_device(&rctx, dev, RT_DEVICE_OFLAG_RDWR | RT_DEVICE_FLAG_INT_RX,
+                             erase_flash, write_flash, NULL, 1000);
+    rt_kprintf("res = %d\n", res);
+}
+MSH_CMD_EXPORT(upgrade, upgrade version);
+
 void boot_app(void)
 {
     LPC_GPIO0->FIODIR &= ~(1<<3);
@@ -85,9 +95,10 @@ void boot_app(void)
 
 int main(void)
 {
+    rt_thread_mdelay(1000);
     rt_kprintf("Bootloader...\n");
     rt_kprintf("After 3 seconds, the system will automatically jump to app1\n");
     rt_kprintf("Press key for 1s to stop in BootLoader.\n");
     rt_kprintf("Press key for 2s to jump to app2.\n");
-    boot_app();
+    //boot_app();
 }

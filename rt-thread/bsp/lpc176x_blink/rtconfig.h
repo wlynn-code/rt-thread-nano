@@ -29,10 +29,12 @@
 // </c>
 
 #define RT_USING_USER_MAIN
+#define RT_MAIN_THREAD_PRIORITY 10
+
 
 // <o>the stack size of main thread<1-4086>
 //  <i>Default: 512
-#define RT_MAIN_THREAD_STACK_SIZE     256
+#define RT_MAIN_THREAD_STACK_SIZE     2048
 
 // </h>
 
@@ -101,7 +103,7 @@
 // <h>Memory Management Configuration
 // <c1>Dynamic Heap Management
 //  <i>Dynamic Heap Management
-//#define RT_USING_HEAP
+#define RT_USING_HEAP
 // </c>
 // <c1>using small memory
 //  <i>using small memory
@@ -133,22 +135,28 @@
 // </h>
 
 #if defined(RT_USING_FINSH)
+    #define FINSH_THREAD_NAME "tshell"
     #define FINSH_USING_MSH
+    #define FINSH_USING_MSH_DEFAULT
     #define FINSH_USING_MSH_ONLY
+    #define FINSH_HISTORY_LINES 5
+    #define FINSH_USING_HISTORY
+    #define FINSH_USING_DESCRIPTION
     // <h>Finsh Configuration
     // <o>the priority of finsh thread <1-7>
     //  <i>the priority of finsh thread
     //  <i>Default: 6
-    #define FINSH_THREAD_PRIORITY       6
+    #define FINSH_THREAD_PRIORITY       20
     // <o>the stack of finsh thread <1-4096>
     //  <i>the stack of finsh thread
     //  <i>Default: 4096  (4096Byte)
     #define FINSH_THREAD_STACK_SIZE     4096
+    #define FINSH_CMD_SIZE 80
     // <o>the history lines of finsh thread <1-32>
     //  <i>the history lines of finsh thread
     //  <i>Default: 5
     #define FINSH_HISTORY_LINES         5
-
+    #define FINSH_ARG_MAX 10
     #define FINSH_USING_SYMTAB
     // </h>
 #endif

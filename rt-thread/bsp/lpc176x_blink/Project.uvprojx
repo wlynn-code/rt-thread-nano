@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.\drivers;..\..\include;..\..\components\finsh;..\lpc176x_blink;.\;..\..\components\utilities\ymodem;..\..\components\utilities\zmodem;..\..\components\dfs\include</IncludePath>
+              <IncludePath>.\drivers;..\..\include;..\..\components\finsh;..\lpc176x_blink;.\;..\..\components\utilities\;..\..\components\utilities\zmodem;..\..\components\dfs\include;.\applications</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -385,6 +385,16 @@
               <FileType>1</FileType>
               <FilePath>.\applications\main.c</FilePath>
             </File>
+            <File>
+              <FileName>boot_iap.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\boot_iap.c</FilePath>
+            </File>
+            <File>
+              <FileName>md5sum.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\md5sum.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -399,6 +409,11 @@
               <FileName>uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\drivers\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>lpc_ipc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drivers\lpc_ipc.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -539,6 +554,16 @@
               <FileName>shell.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\components\finsh\shell.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>utilities</GroupName>
+          <Files>
+            <File>
+              <FileName>ymodem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\components\utilities\ymodem.c</FilePath>
             </File>
           </Files>
         </Group>
