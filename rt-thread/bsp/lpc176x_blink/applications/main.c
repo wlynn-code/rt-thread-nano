@@ -100,5 +100,5 @@ int main(void)
     rt_kprintf("After 3 seconds, the system will automatically jump to app1\n");
     rt_kprintf("Press key for 1s to stop in BootLoader.\n");
     rt_kprintf("Press key for 2s to jump to app2.\n");
-    //boot_app();
+    boot_app();
 }
